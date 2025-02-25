@@ -31,5 +31,6 @@ pip install --upgrade gradio==4.32.2
 pip install -r system/requirements/requirements_parler.txt
 ./alltalk_environment/conda/bin/conda clean --all --force-pkgs-dirs -y
 pip install --upgrade transformers==4.42.4
+pip install fairseq
 python script.py (select XTTS v2)
 ```
