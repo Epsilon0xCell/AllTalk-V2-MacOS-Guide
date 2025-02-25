@@ -17,7 +17,12 @@ source ./conda/bin/activate ../env
 ./conda/bin/conda install -y -c conda-forge "ffmpeg=*=*gpl*"
 cd ..
 nano -w system/requirements/requirements_standalone.txt
-# Change onnxruntime-gpu>=1.18.1 to onnxruntime>=1.18.1 
+# Change onnxruntime-gpu>=1.18.1 to onnxruntime>=1.18.1
+
+# Interesting Part: Obtain the wheel file from here:
+https://github.com/rhasspy/piper-phonemize/issues/14#issuecomment-2094395478 && https://github.com/rhasspy/piper-phonemize/files/15210981/piper_phonemize-1.1.0-cp311-cp311-macosx_11_0_arm64.whl.zip
+unzip in the alltalk_enviornment and then pip install piper_phonemize-1.1.0-cp311-cp311-macosx_11_0_arm64.whl
+
 pip install -r system/requirements/requirements_standalone.txt
 pip install --upgrade gradio==4.19.2
 pip install -r system/requirements/requirements_parler.txt
