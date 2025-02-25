@@ -31,7 +31,7 @@ pip install -r system/requirements/requirements_standalone.txt
 pip install --upgrade gradio==4.32.2
 pip install -r system/requirements/requirements_parler.txt
 ./alltalk_environment/conda/bin/conda clean --all --force-pkgs-dirs -y
-pip install --upgrade transformers==4.42.4
+pip install --upgrade transformers==4.49.0
 pip install pip==24.0
 pip install git+https://github.com/liyaodev/fairseq.git
 python script.py (select XTTS v2)
