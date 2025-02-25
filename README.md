@@ -3,7 +3,7 @@ Updated Guide to installing AllTalk v2 on macOS
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install espeak ffmpeg gcc git curl
+brew install espeak ffmpeg gcc git curl espeakng
 xcode-select --install
 git clone -b alltalkbeta https://github.com/erew123/alltalk_tts
 cd alltalk_tts
