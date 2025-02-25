@@ -31,4 +31,5 @@ pip install --upgrade gradio==4.19.2
 pip install -r system/requirements/requirements_parler.txt
 ./alltalk_environment/conda/bin/conda clean --all --force-pkgs-dirs -y
 pip install --upgrade transformers==4.37.2
+python script.py
 ```
