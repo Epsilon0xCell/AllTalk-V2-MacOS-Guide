@@ -16,6 +16,7 @@ source ./conda/bin/activate ../env
 ./conda/bin/conda install -y -c conda-forge faiss-cpu
 ./conda/bin/conda install -y -c conda-forge "ffmpeg=*=*gpl*"
 cd ..
+nano -w system/requirements/requirements_standalone.txt
 pip install -r system/requirements/requirements_standalone.txt
 pip install --upgrade gradio==4.19.2
 pip install -r system/requirements/requirements_parler.txt
