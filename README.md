@@ -1,6 +1,6 @@
 ![Banner](banner.png)
 
-# AllTalkv2_MacGuide
+# AllTalk-V2-MacOS-Guide
 Updated Guide to installing AllTalk v2 on macOS
 
 ```
