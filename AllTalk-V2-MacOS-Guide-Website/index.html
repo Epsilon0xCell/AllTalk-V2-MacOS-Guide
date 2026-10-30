@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AllTalk-V2-MacOS-Guide - Installation Manual</title>
+<!-- pages-campaign site for Epsilon0xCell/AllTalk-V2-MacOS-Guide; source of truth: AllTalk-V2-MacOS-Guide-Website/ on the default branch -->
+<!-- I set this page like an appliance manual because the repo is one. Plates, numbers, and no decoration that gets in the way of following a step. -->
+<style>
+/* I used a paper white page and hard black rules for the same reason manuals do. You should be able to print this and check steps off with a pen. */
+*{box-sizing:border-box} body{margin:0;background:#f4f1e8;color:#161616;font-family:Helvetica,Arial,sans-serif;line-height:1.55}
+.topbar{border-bottom:4px solid #161616;padding:10px 28px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+main{max-width:880px;margin:0 auto;padding:34px 28px 70px}
+.kicker{font-family:"Courier New",monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;border:1px solid #161616;display:inline-block;padding:4px 10px}
+h1{font-size:52px;line-height:.95;letter-spacing:-.02em;margin:22px 0 10px;font-weight:900;text-transform:uppercase}
+.sub{font-size:20px;max-width:620px}
+.hero{width:100%;border:2px solid #161616;margin:26px 0 8px;display:block}
+.caption{font-family:"Courier New",monospace;font-size:12px;margin-bottom:28px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 30px}
+.badges img{height:20px}
+.rule{border-top:2px solid #161616;margin:34px 0}
+h2{font-size:15px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #161616;padding-bottom:8px}
+.intro p{font-size:17px;max-width:700px}
+.plate{border:2px solid #161616;margin:22px 0;background:#fff}
+.plate-head{display:flex;gap:16px;align-items:baseline;border-bottom:1px solid #161616;padding:12px 16px}
+.plate-no{font-family:"Courier New",monospace;font-weight:bold;font-size:13px;background:#b42318;color:#fff;padding:3px 8px;white-space:nowrap}
+.plate h3{margin:0;font-size:19px}
+.plate-body{padding:14px 16px}
+pre{background:#161616;color:#f4f1e8;padding:14px;overflow:auto;font-family:"Courier New",monospace;font-size:13px;line-height:1.5}
+.note{font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid #161616;padding:4px 10px;font-family:"Courier New",monospace;font-size:13px;background:#fff}
+.warning{border-left:8px solid #b42318;background:#fff;padding:14px 18px}
+a{color:#8f1d14}
+footer{border-top:4px solid #161616;padding:18px 28px;font-family:"Courier New",monospace;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="topbar"><span>Instruction Manual</span><span>Apple Silicon Mac Only</span><span>Rev. Seven Sections</span></div>
+<main>
+<span class="kicker">Model: AllTalk v2 on macOS</span>
+<h1>AllTalk-V2-MacOS-Guide</h1>
+<p class="sub">Updated Guide to installing AllTalk v2 on macOS</p>
+<img class="hero" src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/banner.png" alt="AllTalk-V2-MacOS-Guide banner">
+<p class="caption">FIG. 0 - Banner from this repo. Logo file: logo.png, also in the repo root.</p>
+<div class="badges">
+<img src="https://img.shields.io/github/stars/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Stars">
+<img src="https://img.shields.io/github/forks/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Forks">
+<img src="https://img.shields.io/github/last-commit/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Last commit">
+<img src="https://img.shields.io/github/languages/top/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Top language">
+<img src="https://img.shields.io/github/repo-size/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Repo size">
+</div>
+
+<section class="intro">
+<h2>What this is</h2>
+<p>I wrote this guide because I wanted AllTalk v2 running on my Mac and the steps needed to be in one place, in order. This repo is instructions only. It contains no code of its own.</p>
+<p>The steps run in order. Each section assumes the ones before it are done, and the working directory matters. The environment is created inside the cloned repo, then the guide steps back out of it before the requirements are installed.</p>
+<p>Read the scope note at the end before you start. The pinned versions are a dated snapshot, not a promise that they are still current.</p>
+</section>
+
+<div class="rule"></div>
+<h2>The plates. Follow them in order.</h2>
+
+<!-- I kept each plate to one phase from the README. If a step fails, you should be able to point at one plate and say where you stopped. -->
+<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 1</span><h3>Homebrew and command line tools</h3></div><div class="plate-body">
+<pre>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew unlink espeak
+brew install espeak ffmpeg gcc git curl espeakng
+xcode-select --install</pre></div></article>
+
+<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 2</span><h3>Clone AllTalk and create the environment folder</h3></div><div class="plate-body">
+<pre>git clone -b alltalkbeta https://github.com/erew123/alltalk_tts
+cd alltalk_tts
+mkdir alltalk_environment
+cd alltalk_environment</pre>
+<p class="note">Note the spelling. The folder is alltalk_environment. An earlier version of this guide had a typo in that name in the wheel step, and I fixed it.</p></div></article>
+
+<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 3</span><h3>Miniconda and the Python environment</h3></div><div class="plate-body">
+<pre>curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+bash Miniconda3-latest-MacOSX-arm64.sh -b -p $PWD/conda
+./conda/bin/conda create --no-shortcuts -y -k --prefix ../env python=3.11.9
+source ./conda/bin/activate ../env
+./conda/bin/conda install -y pytorch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 -c pytorch
+./conda/bin/conda install -y -c conda-forge faiss-cpu
+./conda/bin/conda install -y -c conda-forge "ffmpeg=*=*gpl*"
+cd ..</pre></div></article>
+
+<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 4</span><h3>Fix the standalone requirements for Apple Silicon</h3></div><div class="plate-body">
+<pre>nano -w system/requirements/requirements_standalone.txt</pre>
+<p class="note">In that file, change onnxruntime-gpu&gt;=1.18.1 to onnxruntime&gt;=1.18.1. The GPU build does not apply on this platform. The plain package is the one Plate 6 installs.</p></div></article>
+
+<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 5</span><h3>The piper-phonemize wheel</h3></div><div class="plate-body">
+<p class="note">Obtain the wheel file from the piper-phonemize issue linked in the README. Unzip in the alltalk_environment folder and then pip install piper_phonemize-1.1.0-cp311-cp311-macosx_11_0_arm64.whl</p>
+<p class="note">Follow the compile steps at the first link instead if you do not trust the wheel file. I kept that choice in the guide on purpose. It is your call.</p></div></article>
+
+<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 6</span><h3>Install the requirements and the final upgrades</h3></div><div class="plate-body">
+<pre>pip install -r system/requirements/requirements_standalone.txt
+pip install --upgrade gradio==4.32.2
+pip install -r system/requirements/requirements_parler.txt
+./alltalk_environment/conda/bin/conda clean --all --force-pkgs-dirs -y
+pip install --upgrade transformers==4.49.0
+pip install pip==24.0
+pip install git+https://github.com/liyaodev/fairseq.git</pre></div></article>
+
+<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 7</span><h3>Run</h3></div><div class="plate-body">
+<pre>python script.py</pre>
+<p class="note">Then select XTTS v2 in the app. That last part is an instruction for the app, not part of the command. An earlier version wrote it as one shell line, and a shell cannot parse it that way.</p></div></article>
+
+<div class="rule"></div>
+<h2>Parts list</h2>
+<div class="chips"><span class="chip">macOS on Apple Silicon</span><span class="chip">Homebrew</span><span class="chip">Miniconda arm64</span><span class="chip">Python 3.11.9</span><span class="chip">PyTorch 2.2.1</span><span class="chip">Gradio 4.32.2</span><span class="chip">Transformers 4.49.0</span><span class="chip">pip 24.0</span><span class="chip">XTTS v2</span></div>
+
+<div class="rule"></div>
+<div class="warning"><h2>Scope note, in my words</h2>
+<p>This guide is for an Apple Silicon Mac. You can see it in the file names: the MacOSX-arm64 Miniconda installer and the macosx_11_0_arm64 wheel. The pinned versions above are reproduced exactly as written. They were not re-verified against current releases, because a live install was not attempted in the campaign passes that checked this guide. Treat the pins as a dated snapshot and check the AllTalk project for newer versions before installing.</p></div>
+
+<p style="margin-top:28px"><a href="https://github.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide">Read the guide in the repo</a> &nbsp;|&nbsp; <a href="https://github.com/Epsilon0xCell">My GitHub profile</a></p>
+</main>
+<footer><span>Built by Epsilon0xCell</span><span>Manual ends. Check off each plate as you go.</span></footer>
+</body>
+</html>
