@@ -3,119 +3,326 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AllTalk-V2-MacOS-Guide - Installation Manual</title>
+<title>AllTalk-V2-MacOS-Guide: The Installation Route</title>
 <!-- pages-campaign site for Epsilon0xCell/AllTalk-V2-MacOS-Guide; source of truth: AllTalk-V2-MacOS-Guide-Website/ on the default branch -->
-<!-- I set this page like an appliance manual because the repo is one. Plates, numbers, and no decoration that gets in the way of following a step. -->
+<!-- I rebuilt this page as the route itself: seven stations in the order I wrote them, with the line drawn between them as you travel down. -->
 <style>
-/* I used a paper white page and hard black rules for the same reason manuals do. You should be able to print this and check steps off with a pen. */
-*{box-sizing:border-box} body{margin:0;background:#f4f1e8;color:#161616;font-family:Helvetica,Arial,sans-serif;line-height:1.55}
-.topbar{border-bottom:4px solid #161616;padding:10px 28px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
-main{max-width:880px;margin:0 auto;padding:34px 28px 70px}
-.kicker{font-family:"Courier New",monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;border:1px solid #161616;display:inline-block;padding:4px 10px}
-h1{font-size:52px;line-height:.95;letter-spacing:-.02em;margin:22px 0 10px;font-weight:900;text-transform:uppercase}
-.sub{font-size:20px;max-width:620px}
-.hero{width:100%;border:2px solid #161616;margin:26px 0 8px;display:block}
-.caption{font-family:"Courier New",monospace;font-size:12px;margin-bottom:28px}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 30px}
+/* I chose a route line in amber against a deep slate page, because the guide is a journey with stops, not a document with chapters. */
+:root{
+  --ink:#eef1ea;
+  --paper:#1c2422;
+  --panel:#242e2b;
+  --panel-alt:#2a332e;
+  --amber:#e8a33d;
+  --sage:#9db89a;
+  --muted:#b9c2b4;
+  --code-bg:#121716;
+  --line:#3d4a44;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.6}
+a{color:var(--amber)}
+a:hover{color:#f2bc66}
+.masthead{padding:44px 6vw 10px;display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.logo{width:104px;height:104px;border-radius:22px;border:2px solid var(--line);background:#fff;object-fit:cover}
+.masthead-text{max-width:760px}
+.kicker{font-family:"Courier New",monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);margin:0 0 10px}
+h1{font-size:clamp(34px,5.4vw,58px);line-height:1.04;margin:0 0 14px;font-weight:normal}
+.lede{font-size:19px;color:var(--muted);max-width:640px;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:8px;padding:22px 6vw 4px}
 .badges img{height:20px}
-.rule{border-top:2px solid #161616;margin:34px 0}
-h2{font-size:15px;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid #161616;padding-bottom:8px}
-.intro p{font-size:17px;max-width:700px}
-.plate{border:2px solid #161616;margin:22px 0;background:#fff}
-.plate-head{display:flex;gap:16px;align-items:baseline;border-bottom:1px solid #161616;padding:12px 16px}
-.plate-no{font-family:"Courier New",monospace;font-weight:bold;font-size:13px;background:#b42318;color:#fff;padding:3px 8px;white-space:nowrap}
-.plate h3{margin:0;font-size:19px}
-.plate-body{padding:14px 16px}
-pre{background:#161616;color:#f4f1e8;padding:14px;overflow:auto;font-family:"Courier New",monospace;font-size:13px;line-height:1.5}
-.note{font-size:15px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1px solid #161616;padding:4px 10px;font-family:"Courier New",monospace;font-size:13px;background:#fff}
-.warning{border-left:8px solid #b42318;background:#fff;padding:14px 18px}
-a{color:#8f1d14}
-footer{border-top:4px solid #161616;padding:18px 28px;font-family:"Courier New",monospace;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.banner-wrap{padding:20px 6vw 0}
+.banner{width:100%;max-width:980px;display:block;border-radius:14px;border:1px solid var(--line)}
+figure{margin:0}
+figcaption{font-family:"Courier New",monospace;font-size:12.5px;color:var(--muted);padding-top:8px;max-width:980px}
+main{padding:10px 6vw 30px}
+.intro{max-width:680px;margin:34px 0 8px;font-size:17.5px}
+.intro p{margin:0 0 16px}
+h2{font-size:27px;font-weight:normal;margin:52px 0 6px}
+.section-note{color:var(--muted);max-width:660px;margin:0 0 10px}
+/* The route: I laid the stations along one line so the order is visible at a glance, and I varied their widths so the eye slows down where the work is heavy. */
+.route{position:relative;margin:36px 0 10px;padding:10px 0 10px 58px}
+.route-track{position:absolute;left:22px;top:0;bottom:0;width:4px;background:var(--line);border-radius:2px}
+.route-progress{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--amber);border-radius:2px;transform:scaleY(1);transform-origin:top center}
+.station{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:0 0 30px}
+.station:nth-child(odd){background:var(--panel-alt)}
+.station.w-wide{max-width:860px}
+.station.w-mid{max-width:700px;margin-left:48px}
+.station.w-narrow{max-width:560px;margin-left:110px}
+.station.w-offset{max-width:780px;margin-left:24px}
+.node{position:absolute;left:-58px;top:22px;width:40px;height:40px;border-radius:50%;background:var(--amber);color:#1c2422;font-family:"Courier New",monospace;font-weight:bold;font-size:17px;display:flex;align-items:center;justify-content:center;border:3px solid var(--paper)}
+.station h3{margin:0 0 4px;font-size:22px;font-weight:normal}
+.station .why{color:var(--muted);margin:0 0 14px;font-size:16px}
+pre{background:var(--code-bg);color:#e9e4d2;border:1px solid var(--line);border-radius:10px;padding:15px 16px;overflow-x:auto;font-family:"Courier New",monospace;font-size:13.5px;line-height:1.55;margin:0 0 14px;white-space:pre-wrap;word-break:break-word}
+.station p.note{margin:0;font-size:16px}
+.side-note{border-left:4px solid var(--amber);background:#1f2825;border-radius:0 10px 10px 0;padding:14px 18px;margin-top:16px}
+.side-note h4{margin:0 0 6px;font-size:16px;font-family:"Courier New",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+.side-note p{margin:0 0 10px;font-size:15.5px}
+.side-note p:last-child{margin-bottom:0}
+.side-note pre{margin-bottom:10px}
+/* Reveal: I gate the hidden start state on the js class, so the full route reads complete with JavaScript off. */
+.js .station{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.js .station.revealed{opacity:1;transform:none}
+table{border-collapse:collapse;width:100%;max-width:720px;margin:18px 0;font-size:16px}
+th,td{border:1px solid var(--line);padding:9px 14px;text-align:left}
+th{font-family:"Courier New",monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);background:var(--panel)}
+td.pin{font-family:"Courier New",monospace;color:#e9e4d2}
+.limits{border:1px solid var(--amber);border-radius:14px;padding:20px 24px;max-width:760px;margin:20px 0;background:#22291f}
+.limits h3{margin:0 0 8px;font-size:19px;font-weight:normal;color:var(--amber)}
+.limits p{margin:0 0 10px}
+.limits p:last-child{margin-bottom:0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin:22px 0}
+.gallery figure{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.gallery img{width:100%;display:block;border-radius:8px;background:#fff}
+.gallery figcaption{padding-top:10px}
+footer{border-top:1px solid var(--line);padding:24px 6vw 34px;display:flex;flex-wrap:wrap;gap:12px 30px;font-family:"Courier New",monospace;font-size:13.5px;color:var(--muted)}
+@media (max-width:640px){
+  .route{padding-left:44px}
+  .route-track{left:15px}
+  .node{left:-44px;width:32px;height:32px;font-size:14px}
+  .station.w-mid,.station.w-narrow,.station.w-offset{margin-left:0}
+  .masthead{padding-top:30px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .js .station{opacity:1;transform:none;transition:none}
+  .route-progress{transform:scaleY(1) !important}
+}
 </style>
 </head>
 <body>
-<div class="topbar"><span>Instruction Manual</span><span>Apple Silicon Mac Only</span><span>Rev. Seven Sections</span></div>
-<main>
-<span class="kicker">Model: AllTalk v2 on macOS</span>
-<h1>AllTalk-V2-MacOS-Guide</h1>
-<p class="sub">Updated Guide to installing AllTalk v2 on macOS</p>
-<img class="hero" src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/banner.png" alt="AllTalk-V2-MacOS-Guide banner">
-<p class="caption">FIG. 0 - Banner from this repo. Logo file: logo.png, also in the repo root.</p>
+<header class="masthead">
+  <img class="logo" src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/logo.png" alt="AllTalk-V2-MacOS-Guide logo">
+  <div class="masthead-text">
+    <p class="kicker">Apple Silicon Mac only, seven stops, in order</p>
+    <h1>AllTalk-V2-MacOS-Guide: The Installation Route</h1>
+    <p class="lede">I wrote this guide to get AllTalk v2 running on my Mac. This page walks the same road my README walks: seven stations from Homebrew to a running XTTS v2, every command printed exactly as I gave it, pins and all.</p>
+  </div>
+</header>
+
 <div class="badges">
-<img src="https://img.shields.io/github/stars/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Stars">
-<img src="https://img.shields.io/github/forks/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Forks">
-<img src="https://img.shields.io/github/last-commit/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Last commit">
-<img src="https://img.shields.io/github/languages/top/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Top language">
-<img src="https://img.shields.io/github/repo-size/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=b42318&labelColor=161616" alt="Repo size">
+  <img src="https://img.shields.io/github/stars/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=e8a33d&labelColor=242e2b" alt="Stars">
+  <img src="https://img.shields.io/github/forks/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=e8a33d&labelColor=242e2b" alt="Forks">
+  <img src="https://img.shields.io/github/last-commit/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=e8a33d&labelColor=242e2b" alt="Last commit">
+  <img src="https://img.shields.io/github/languages/top/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=e8a33d&labelColor=242e2b" alt="Top language">
+  <img src="https://img.shields.io/github/repo-size/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=e8a33d&labelColor=242e2b" alt="Repo size">
+  <img src="https://img.shields.io/github/license/Epsilon0xCell/AllTalk-V2-MacOS-Guide?style=flat&color=e8a33d&labelColor=242e2b" alt="License: MIT">
 </div>
 
+<div class="banner-wrap">
+  <figure>
+    <img class="banner" src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/banner.png" alt="AllTalk-V2-MacOS-Guide banner">
+    <figcaption>My banner for this repo, with the logo above. Both files live in the repo root, next to the README that is the whole guide.</figcaption>
+  </figure>
+</div>
+
+<main>
 <section class="intro">
-<h2>What this is</h2>
-<p>I wrote this guide because I wanted AllTalk v2 running on my Mac and the steps needed to be in one place, in order. This repo is instructions only. It contains no code of its own.</p>
-<p>The steps run in order. Each section assumes the ones before it are done, and the working directory matters. The environment is created inside the cloned repo, then the guide steps back out of it before the requirements are installed.</p>
-<p>Read the scope note at the end before you start. The pinned versions are a dated snapshot, not a promise that they are still current.</p>
+  <p>This repo is instructions only. It contains no code of its own, and I want that plain before anything else: what you are following here is my README, set out as a route.</p>
+  <p>The steps run in order. Each section assumes the ones before it are done, and the working directory matters: I create the environment inside the cloned repo, then step back out of it before the requirements go in. If you stop halfway, the station numbers tell you exactly where you stopped and where to pick the road back up.</p>
 </section>
 
-<div class="rule"></div>
-<h2>The plates. Follow them in order.</h2>
+<h2>The route</h2>
+<p class="section-note">Follow the line down. Each station carries its commands exactly as my README gives them, and a short note from me on what the step does and why it sits where it does.</p>
 
-<!-- I kept each plate to one phase from the README. If a step fails, you should be able to point at one plate and say where you stopped. -->
-<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 1</span><h3>Homebrew and command line tools</h3></div><div class="plate-body">
-<pre>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+<div class="route" id="route">
+  <div class="route-track" aria-hidden="true"><div class="route-progress" id="routeProgress"></div></div>
+
+  <article class="station w-mid">
+    <span class="node" aria-hidden="true">1</span>
+    <h3>Station 1: Homebrew and command line tools</h3>
+    <p class="why">I start here because every later station leans on these tools: ffmpeg and espeak do real work for the voice pipeline, and git is how the project itself arrives at station 2.</p>
+    <pre data-capture="1">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 brew unlink espeak
 brew install espeak ffmpeg gcc git curl espeakng
-xcode-select --install</pre></div></article>
+xcode-select --install
+</pre>
+    <p class="note">The unlink line comes first in my install line on purpose: I clear any older espeak link before Homebrew puts its own in place.</p>
+  </article>
 
-<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 2</span><h3>Clone AllTalk and create the environment folder</h3></div><div class="plate-body">
-<pre>git clone -b alltalkbeta https://github.com/erew123/alltalk_tts
+  <article class="station w-offset">
+    <span class="node" aria-hidden="true">2</span>
+    <h3>Station 2: Clone AllTalk and create the environment folder</h3>
+    <p class="why">I clone the upstream AllTalk project on its alltalkbeta branch, then make the environment folder inside the clone. That folder is home base for the next three stations.</p>
+    <pre data-capture="2">git clone -b alltalkbeta https://github.com/erew123/alltalk_tts
 cd alltalk_tts
 mkdir alltalk_environment
-cd alltalk_environment</pre>
-<p class="note">Note the spelling. The folder is alltalk_environment. An earlier version of this guide had a typo in that name in the wheel step, and I fixed it.</p></div></article>
+cd alltalk_environment
+</pre>
+    <p class="note">Mind the spelling: the folder is alltalk_environment. An earlier pass of my guide had that name mistyped in a later step, and I fixed it, because a folder created under one name and entered under another ends the trip early.</p>
+  </article>
 
-<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 3</span><h3>Miniconda and the Python environment</h3></div><div class="plate-body">
-<pre>curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+  <article class="station w-wide">
+    <span class="node" aria-hidden="true">3</span>
+    <h3>Station 3: Miniconda and the Python environment</h3>
+    <p class="why">This is the heaviest station on the route, and I gave it the widest berth. Miniconda goes in locally, the Python 3.11.9 environment is built next to it, and the PyTorch stack, faiss-cpu, and the gpl build of ffmpeg land here, before I step back out with the last line.</p>
+    <pre data-capture="3">curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
 bash Miniconda3-latest-MacOSX-arm64.sh -b -p $PWD/conda
 ./conda/bin/conda create --no-shortcuts -y -k --prefix ../env python=3.11.9
 source ./conda/bin/activate ../env
 ./conda/bin/conda install -y pytorch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 -c pytorch
 ./conda/bin/conda install -y -c conda-forge faiss-cpu
-./conda/bin/conda install -y -c conda-forge "ffmpeg=*=*gpl*"
-cd ..</pre></div></article>
+./conda/bin/conda install -y -c conda-forge &quot;ffmpeg=*=*gpl*&quot;
+cd ..
+</pre>
+    <p class="note">The arm64 in the installer name is the whole platform story of this guide in one word. If your Mac is not Apple Silicon, this route is not yours.</p>
+  </article>
 
-<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 4</span><h3>Fix the standalone requirements for Apple Silicon</h3></div><div class="plate-body">
-<pre>nano -w system/requirements/requirements_standalone.txt</pre>
-<p class="note">In that file, change onnxruntime-gpu&gt;=1.18.1 to onnxruntime&gt;=1.18.1. The GPU build does not apply on this platform. The plain package is the one Plate 6 installs.</p></div></article>
+  <article class="station w-narrow">
+    <span class="node" aria-hidden="true">4</span>
+    <h3>Station 4: Fix the standalone requirements for Apple Silicon</h3>
+    <p class="why">One file, one line changed. I open the standalone requirements in nano and swap a single package name before anything installs from that file at station 6.</p>
+    <pre data-capture="4">nano -w system/requirements/requirements_standalone.txt
+</pre>
+    <div class="side-note">
+      <h4>Side note: the onnxruntime swap</h4>
+      <p>In that file, I change the first line below to the second, exactly as my guide states it:</p>
+      <pre data-capture="4-swap">onnxruntime-gpu&gt;=1.18.1
+onnxruntime&gt;=1.18.1
+</pre>
+      <p>The GPU build does not apply on this platform. Apple Silicon is not the hardware that package is built for, so leaving the gpu name in place asks the installer for something this machine cannot use. The plain package is the one station 6 installs.</p>
+    </div>
+  </article>
 
-<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 5</span><h3>The piper-phonemize wheel</h3></div><div class="plate-body">
-<p class="note">Obtain the wheel file from the piper-phonemize issue linked in the README. Unzip in the alltalk_environment folder and then pip install piper_phonemize-1.1.0-cp311-cp311-macosx_11_0_arm64.whl</p>
-<p class="note">Follow the compile steps at the first link instead if you do not trust the wheel file. I kept that choice in the guide on purpose. It is your call.</p></div></article>
+  <article class="station w-offset">
+    <span class="node" aria-hidden="true">5</span>
+    <h3>Station 5: The piper-phonemize wheel</h3>
+    <p class="why">This station has no tidy install command in my README, so I printed its text exactly as I wrote it there: where the wheel lives, what to do with it, and what to do instead if you would rather not.</p>
+    <pre data-capture="5">Interesting part: obtain the wheel file from here:
+https://github.com/rhasspy/piper-phonemize/issues/14#issuecomment-2094395478
+The file itself:
+https://github.com/rhasspy/piper-phonemize/files/15210981/piper_phonemize-1.1.0-cp311-cp311-macosx_11_0_arm64.whl.zip
 
-<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 6</span><h3>Install the requirements and the final upgrades</h3></div><div class="plate-body">
-<pre>pip install -r system/requirements/requirements_standalone.txt
+Unzip in the alltalk_environment folder and then pip install
+piper_phonemize-1.1.0-cp311-cp311-macosx_11_0_arm64.whl
+
+Follow the compile steps at the first link instead if you do not trust
+the wheel file.
+</pre>
+    <div class="side-note">
+      <h4>Side note: where the wheel comes from, and the trust call</h4>
+      <p>The wheel reaches you through a comment on an issue in the rhasspy/piper-phonemize project, not through a package index. I know what that asks of a reader, so my guide keeps its own fallback in the same breath: follow the compile steps at the first link instead if you do not trust the wheel file. I kept that choice in the guide on purpose. It is your call to make, with both doors open.</p>
+    </div>
+  </article>
+
+  <article class="station w-wide">
+    <span class="node" aria-hidden="true">6</span>
+    <h3>Station 6: Install the requirements and the final upgrades</h3>
+    <p class="why">With the requirements file corrected at station 4 and the wheel handled at station 5, I install from the requirements files, clear the conda caches, and then pin the last upgrades: Gradio, Transformers, pip itself, and fairseq from its git address.</p>
+    <pre data-capture="6">pip install -r system/requirements/requirements_standalone.txt
 pip install --upgrade gradio==4.32.2
 pip install -r system/requirements/requirements_parler.txt
 ./alltalk_environment/conda/bin/conda clean --all --force-pkgs-dirs -y
 pip install --upgrade transformers==4.49.0
 pip install pip==24.0
-pip install git+https://github.com/liyaodev/fairseq.git</pre></div></article>
+pip install git+https://github.com/liyaodev/fairseq.git
+</pre>
+    <p class="note">The order here is mine and it matters to me: the pinned upgrades come after the requirements files, so the versions I chose are the versions left standing.</p>
+  </article>
 
-<article class="plate"><div class="plate-head"><span class="plate-no">PLATE 7</span><h3>Run</h3></div><div class="plate-body">
-<pre>python script.py</pre>
-<p class="note">Then select XTTS v2 in the app. That last part is an instruction for the app, not part of the command. An earlier version wrote it as one shell line, and a shell cannot parse it that way.</p></div></article>
+  <article class="station w-narrow">
+    <span class="node" aria-hidden="true">7</span>
+    <h3>Station 7: Run</h3>
+    <p class="why">The shortest station on the route, and the one the other six exist for.</p>
+    <pre data-capture="7">python script.py
+</pre>
+    <p class="note">Then select XTTS v2 in the app. That last part is an instruction for the app, not part of the command. An earlier version of my guide wrote it as one shell line with a parenthetical a shell cannot parse, and I fixed that too: the command ends where the command ends.</p>
+  </article>
+</div>
 
-<div class="rule"></div>
-<h2>Parts list</h2>
-<div class="chips"><span class="chip">macOS on Apple Silicon</span><span class="chip">Homebrew</span><span class="chip">Miniconda arm64</span><span class="chip">Python 3.11.9</span><span class="chip">PyTorch 2.2.1</span><span class="chip">Gradio 4.32.2</span><span class="chip">Transformers 4.49.0</span><span class="chip">pip 24.0</span><span class="chip">XTTS v2</span></div>
+<h2>The pins manifest</h2>
+<p class="section-note">Every pinned version on the route, in one place. I label this what it is: a dated snapshot, reproduced exactly as I wrote it.</p>
+<table>
+  <thead><tr><th>Package</th><th>Pinned version</th><th>Where it is set</th></tr></thead>
+  <tbody>
+    <tr><td>Python</td><td class="pin">3.11.9</td><td>Station 3, conda create</td></tr>
+    <tr><td>PyTorch</td><td class="pin">2.2.1</td><td>Station 3, conda install</td></tr>
+    <tr><td>torchvision</td><td class="pin">0.17.1</td><td>Station 3, conda install</td></tr>
+    <tr><td>torchaudio</td><td class="pin">2.2.1</td><td>Station 3, conda install</td></tr>
+    <tr><td>Gradio</td><td class="pin">4.32.2</td><td>Station 6, pip upgrade</td></tr>
+    <tr><td>Transformers</td><td class="pin">4.49.0</td><td>Station 6, pip upgrade</td></tr>
+    <tr><td>pip</td><td class="pin">24.0</td><td>Station 6, pip install</td></tr>
+  </tbody>
+</table>
+<p class="section-note">Two more version facts ride along without a pin of their own: the requirements swap at station 4 sets a floor of onnxruntime 1.18.1, and faiss-cpu and the gpl build of ffmpeg at station 3 carry no version numbers in my guide at all.</p>
 
-<div class="rule"></div>
-<div class="warning"><h2>Scope note, in my words</h2>
-<p>This guide is for an Apple Silicon Mac. You can see it in the file names: the MacOSX-arm64 Miniconda installer and the macosx_11_0_arm64 wheel. The pinned versions above are reproduced exactly as written. They were not re-verified against current releases, because a live install was not attempted in the campaign passes that checked this guide. Treat the pins as a dated snapshot and check the AllTalk project for newer versions before installing.</p></div>
+<div class="limits">
+  <h3>Honest limits, in my own words</h3>
+  <p>The pinned versions on this page are my guide's dated snapshot, reproduced exactly as written. They were not re-verified against current releases: no live install was attempted for this page, and the upstream sites sit outside the allowed hosts for the pass that built it.</p>
+  <p>Treat the pins as dated. Check the AllTalk project for newer versions before you install, and expect that some of these numbers will have moved on since I wrote them down.</p>
+  <p>This route is for an Apple Silicon Mac only. You can see it in the file names I rely on: the MacOSX-arm64 Miniconda installer and the macosx_11_0_arm64 wheel.</p>
+</div>
 
-<p style="margin-top:28px"><a href="https://github.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide">Read the guide in the repo</a> &nbsp;|&nbsp; <a href="https://github.com/Epsilon0xCell">My GitHub profile</a></p>
+<h2>The guide, drawn</h2>
+<p class="section-note">Five sheets are described in my Visuals folder's VISUAL.md, and the folder itself holds six. I show all six here, and I say so plainly rather than quietly dropping the extra one. The sheets were drawn by hand from the repo as it sat on 2026-10-30, on notebook paper, with every mark kept clear of the binder holes.</p>
+<div class="gallery">
+  <figure>
+    <img src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/AllTalk-V2-MacOS-Guide-Visuals/architecture.png" alt="Architecture sheet for AllTalk-V2-MacOS-Guide">
+    <figcaption>Architecture: the put-together, as VISUAL.md describes it. The biggest file sits at the top and the files under it are the next largest.</figcaption>
+  </figure>
+  <figure>
+    <img src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/AllTalk-V2-MacOS-Guide-Visuals/flowchart.png" alt="Flowchart sheet for AllTalk-V2-MacOS-Guide">
+    <figcaption>Flowchart: the run, from the entry file through the real steps, ending where things end.</figcaption>
+  </figure>
+  <figure>
+    <img src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/AllTalk-V2-MacOS-Guide-Visuals/product-map.png" alt="Product map sheet for AllTalk-V2-MacOS-Guide">
+    <figcaption>Product map: what the project is for, what goes in, what comes out, and where it stops. I agree with VISUAL.md that the stop card matters as much as the rest.</figcaption>
+  </figure>
+  <figure>
+    <img src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/AllTalk-V2-MacOS-Guide-Visuals/data-flow.png" alt="Data flow sheet for AllTalk-V2-MacOS-Guide">
+    <figcaption>Data flow: the data path in one direction, file to result.</figcaption>
+  </figure>
+  <figure>
+    <img src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/AllTalk-V2-MacOS-Guide-Visuals/statistics.png" alt="Statistics sheet for AllTalk-V2-MacOS-Guide">
+    <figcaption>Statistics: the counts, drawn as bars you can check against the repo itself.</figcaption>
+  </figure>
+  <figure>
+    <img src="https://raw.githubusercontent.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide/main/AllTalk-V2-MacOS-Guide-Visuals/schematic.png" alt="Schematic sheet for AllTalk-V2-MacOS-Guide">
+    <figcaption>Schematic: the sixth sheet, present in the folder but not listed in VISUAL.md. It draws the document itself as the apparatus: README.md as the single part, its sections as the parts, on the base plate of the repo. Its counts were taken from an earlier, shorter snapshot of the README, so I let the drawing speak as a drawing and take my numbers from the current guide instead.</figcaption>
+  </figure>
+</div>
+<p class="section-note">The same sheets sit together in AllTalk-V2-MacOS-Guide-Visuals.pdf inside the Visuals folder, in the order VISUAL.md gives, for printing or sending without the folder.</p>
 </main>
-<footer><span>Built by Epsilon0xCell</span><span>Manual ends. Check off each plate as you go.</span></footer>
+
+<footer>
+  <span>Built by Epsilon0xCell</span>
+  <span><a href="https://github.com/Epsilon0xCell/AllTalk-V2-MacOS-Guide">This repo and its README</a></span>
+  <span><a href="https://github.com/erew123/alltalk_tts">The upstream AllTalk project</a></span>
+  <span><a href="https://github.com/Epsilon0xCell">github.com/Epsilon0xCell</a></span>
+</footer>
+
+<script>
+/* I draw the route line as the reader travels: it fills in reading order, and it stays fully drawn for anyone who prefers reduced motion or has no JavaScript at all. */
+(function () {
+  document.documentElement.classList.add("js");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var stations = Array.prototype.slice.call(document.querySelectorAll(".station"));
+  if (reduce || !("IntersectionObserver" in window)) {
+    stations.forEach(function (s) { s.classList.add("revealed"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("revealed"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    stations.forEach(function (s) { io.observe(s); });
+  }
+  if (reduce) { return; }
+  var route = document.getElementById("route");
+  var progress = document.getElementById("routeProgress");
+  function draw() {
+    var rect = route.getBoundingClientRect();
+    var travelled = (window.innerHeight * 0.55) - rect.top;
+    var ratio = travelled / rect.height;
+    if (ratio < 0) { ratio = 0; }
+    if (ratio > 1) { ratio = 1; }
+    progress.style.transform = "scaleY(" + ratio + ")";
+  }
+  window.addEventListener("scroll", draw, { passive: true });
+  window.addEventListener("resize", draw);
+  draw();
+})();
+</script>
 </body>
 </html>
