@@ -1,26 +1,26 @@
-![Introduction: a brass rete turned halfway over its plate, an instrument mid thought](intro-banner.png)
+![AllTalk-V2-MacOS-Guide introduction, wordless](intro-banner.png)
 
-![Banner](banner.png)
+![AllTalk-V2-MacOS-Guide banner](banner.png)
 
-![The bench, animated: a rete turns, pauses, turns again over its plate](assets-scene.svg)
+![AllTalk-V2-MacOS-Guide animated scene](assets-scene.svg)
 
 # AllTalk-V2-MacOS-Guide
 
-**The Astrolabe Maker of Toledo**
-_Careful ordered reckoning, done by hand, gets a machine to speak._
+**The Speaking Astrolabe**
+_Brass, teal, and patience: ordered reckoning that ends with a machine speaking._
 Updated Guide to installing AllTalk v2 on macOS
 
 The steps run in order. Each section assumes the ones before it are
 
-> Wax tablet: mind the folder spelling. The folder is alltalk_environment, and a folder created under one name and entered under another ends the trip early.
+> Brass plaque: mind the folder spelling. The folder is alltalk_environment, and a folder created under one name and entered under another ends the trip early.
 done, and the working directory matters: the environment is created
 inside the cloned repo, then the guide steps back out of it before the
 requirements are installed.
 
 ## 1. Homebrew and command line tools
-_Station 1 of 7, first light_
+_Station 1 of 7 · the first brass fitting_
 
-![Major separator: an arc of degree ticks](sep-heavy.svg)
+![Major separator](sep-heavy.svg)
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -30,9 +30,9 @@ xcode-select --install
 ```
 
 ## 2. Clone AllTalk and create the environment folder
-_Station 2 of 7, morning_
+_Station 2 of 7 · laying out the plate_
 
-![Minor separator: an arc of degree ticks](sep-light.svg)
+![Minor separator](sep-light.svg)
 
 ```
 git clone -b alltalkbeta https://github.com/erew123/alltalk_tts
@@ -42,9 +42,9 @@ cd alltalk_environment
 ```
 
 ## 3. Miniconda and the Python environment
-_Station 3 of 7, midday, the heavy lift_
+_Station 3 of 7 · the heavy casting_
 
-![Minor separator: an arc of degree ticks](sep-light.svg)
+![Minor separator](sep-light.svg)
 
 ```
 curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
@@ -58,9 +58,9 @@ cd ..
 ```
 
 ## 4. Fix the standalone requirements for Apple Silicon
-_Station 4 of 7, afternoon_
+_Station 4 of 7 · filing the edges true_
 
-![Minor separator: an arc of degree ticks](sep-light.svg)
+![Minor separator](sep-light.svg)
 
 ```
 nano -w system/requirements/requirements_standalone.txt
@@ -71,9 +71,9 @@ The GPU build does not apply on this platform; the plain package is the
 one section 6 installs.
 
 ## 5. The piper-phonemize wheel
-_Station 5 of 7, late afternoon_
+_Station 5 of 7 · the small wheel, fitted_
 
-![Minor separator: an arc of degree ticks](sep-light.svg)
+![Minor separator](sep-light.svg)
 
 Interesting part: obtain the wheel file from here:
 https://github.com/rhasspy/piper-phonemize/issues/14#issuecomment-2094395478
@@ -87,9 +87,9 @@ Follow the compile steps at the first link instead if you do not trust
 the wheel file.
 
 ## 6. Install the requirements and the final upgrades
-_Station 6 of 7, dusk_
+_Station 6 of 7 · polish and assembly_
 
-![Minor separator: an arc of degree ticks](sep-light.svg)
+![Minor separator](sep-light.svg)
 
 ```
 pip install -r system/requirements/requirements_standalone.txt
@@ -102,9 +102,9 @@ pip install git+https://github.com/liyaodev/fairseq.git
 ```
 
 ## 7. Run
-_Station 7 of 7, lamp lighting_
+_Station 7 of 7 · the first sound_
 
-![Minor separator: an arc of degree ticks](sep-light.svg)
+![Minor separator](sep-light.svg)
 
 ```
 python script.py
@@ -113,8 +113,8 @@ python script.py
 Then select XTTS v2 in the app.
 
 ## Scope note
-_The colophon, read before you set out_
+_The colophon, read before the first fitting_
 
-![Major separator: an arc of degree ticks](sep-heavy.svg)
+![Major separator](sep-heavy.svg)
 
 This repo is instructions only; it contains no code of its own. The steps above are for an Apple Silicon Mac (note the `MacOSX-arm64` Miniconda installer and the `macosx_11_0_arm64` wheel). The pinned versions in the steps (Python 3.11.9, PyTorch 2.2.1, Gradio 4.32.2, Transformers 4.49.0, pip 24.0) are reproduced exactly as written; they were not re-verified against current releases in this pass, because a live install was not attempted and the upstream sites are outside this pass's allowed hosts. Treat the pins as the guide's dated snapshot, and check the AllTalk project for newer versions before installing. The two fixes in this pass are the directory-name typo above (the folder is `alltalk_environment`, not `alltalk_enviornment`) and the last step, which previously read as a single shell command with a parenthetical that a shell cannot parse.

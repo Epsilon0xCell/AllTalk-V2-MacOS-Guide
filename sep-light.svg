@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 40" width="300" role="img" aria-label="Minor separator"><path d="M 20 34 A 140 60 0 0 1 280 34" fill="none" stroke="#78541e" stroke-width="3"/><line x1="44" y1="30" x2="44" y2="21" stroke="#78541e" stroke-width="2"/><line x1="70" y1="30" x2="70" y2="21" stroke="#78541e" stroke-width="2"/><line x1="96" y1="30" x2="96" y2="21" stroke="#78541e" stroke-width="2"/><line x1="122" y1="30" x2="122" y2="21" stroke="#78541e" stroke-width="2"/><line x1="148" y1="30" x2="148" y2="21" stroke="#78541e" stroke-width="2"/><line x1="174" y1="30" x2="174" y2="21" stroke="#78541e" stroke-width="2"/><line x1="200" y1="30" x2="200" y2="21" stroke="#78541e" stroke-width="2"/><line x1="226" y1="30" x2="226" y2="21" stroke="#78541e" stroke-width="2"/><line x1="252" y1="30" x2="252" y2="21" stroke="#78541e" stroke-width="2"/><polygon points="136,36 150,14 164,36" fill="#2e5096"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="10" viewBox="0 0 800 10">
+<rect width="800" height="10" fill="#0b3b3a"/>
+<rect x="0" y="4" width="800" height="2" fill="#c9a227" opacity="0.65"/>
+<rect x="0" y="3" width="60" height="4" fill="#f5eeda">
+<animate attributeName="x" values="-60;800" dur="5.5s" repeatCount="indefinite"/></rect>
+</svg>
