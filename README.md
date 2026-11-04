@@ -1,8 +1,10 @@
-![AllTalk-V2-MacOS-Guide introduction, wordless](intro-banner.png)
+<p align="center"><img src="intro-banner.png" alt="AllTalk-V2-MacOS-Guide introduction, wordless" width="800"></p>
 
-![AllTalk-V2-MacOS-Guide banner](banner.png)
+<p align="center"><img src="banner.png" alt="AllTalk-V2-MacOS-Guide banner" width="800"></p>
 
 ![AllTalk-V2-MacOS-Guide animated scene](assets-scene.svg)
+
+<p align="center"><img src="logo.png" alt="AllTalk-V2-MacOS-Guide logo" width="200"></p>
 
 # AllTalk-V2-MacOS-Guide
 
@@ -16,6 +18,17 @@ The steps run in order. Each section assumes the ones before it are
 done, and the working directory matters: the environment is created
 inside the cloned repo, then the guide steps back out of it before the
 requirements are installed.
+
+## Steps
+
+- [1. Homebrew and command line tools](#1-homebrew-and-command-line-tools)
+- [2. Clone AllTalk and create the environment folder](#2-clone-alltalk-and-create-the-environment-folder)
+- [3. Miniconda and the Python environment](#3-miniconda-and-the-python-environment)
+- [4. Fix the standalone requirements for Apple Silicon](#4-fix-the-standalone-requirements-for-apple-silicon)
+- [5. The piper-phonemize wheel](#5-the-piper-phonemize-wheel)
+- [6. Install the requirements and the final upgrades](#6-install-the-requirements-and-the-final-upgrades)
+- [7. Run](#7-run)
+- [Scope note](#scope-note)
 
 ## 1. Homebrew and command line tools
 _Station 1 of 7 · the first brass fitting_
